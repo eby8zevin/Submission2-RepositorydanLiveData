@@ -1,16 +1,19 @@
 package com.ahmadabuhasan.repositorydanlivedata.ui.movie;
 
-import android.view.View;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ahmadabuhasan.repositorydanlivedata.databinding.ItemListBinding;
+
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        ItemListBinding binding = ItemListBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new MovieViewHolder(binding);
     }
 
     @Override
@@ -24,8 +27,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     public class MovieViewHolder extends RecyclerView.ViewHolder {
-        public MovieViewHolder(@NonNull View itemView) {
-            super(itemView);
+
+        private final ItemListBinding binding;
+
+        public MovieViewHolder(@NonNull ItemListBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
         }
     }
 }
