@@ -2,26 +2,31 @@ package com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.movi
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Movie {
 
     @SerializedName("adult")
-    private
-
-
+    private Boolean adult;
     @SerializedName("backdrop_path")
-    private
-
+    private String backdropPath;
     @SerializedName("genre_ids")
+    private List<int> genreIds;
     @SerializedName("id")
+    private int id;
     @SerializedName("original_language")
+    private String originalLanguage;
     @SerializedName("original_title")
-    @SerializedName("original_language")
-    @SerializedName("original_title")
+    private String original_time;
     @SerializedName("overview")
+    private String ("overview");
+    @SerializedName("popularity")
+    private Double popularity;
     @SerializedName("poster_path")
-    @SerializedName("poster_path")
-    @SerializedName("")
-
-
+    @SerializedName("release_date")
+    @SerializedName("title")
+    @SerializedName("video")
+    @SerializedName("vote_average")
+    @SerializedName("vote_acount")
 
 }
