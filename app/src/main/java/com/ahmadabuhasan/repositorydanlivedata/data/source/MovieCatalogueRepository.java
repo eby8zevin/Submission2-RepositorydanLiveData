@@ -27,6 +27,7 @@ public class MovieCatalogueRepository implements MovieCatalogueDataSource {
         return INSTANCE;
     }
 
+    @Override
     public LiveData<List<MovieEntity>> getMovies(){
         MutableLiveData<List<MovieEntity>> movieResults = new MutableLiveData<>();
         remoteDataSource.getMovies(movieResponse);
