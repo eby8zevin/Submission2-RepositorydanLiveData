@@ -11,4 +11,5 @@ public interface ApiService {
     @GET("discover/movie")
     Call<MovieResponse> getMovies(
             @Query("api_key") String apiKey);
+
 }
