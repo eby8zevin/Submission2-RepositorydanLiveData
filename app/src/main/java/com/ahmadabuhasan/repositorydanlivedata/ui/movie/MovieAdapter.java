@@ -36,11 +36,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         MovieEntity movieEntity = listMovie.get(position);
         Glide.with(holder.itemView.getContext())
-                .load(movieEntity.getMoviePoster())
+                .load(movieEntity.getPosterPath())
                 .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
                 .into(holder.binding.ivPoster);
-        holder.binding.tvTitle.setText(movieEntity.getMovieTitle());
-        holder.binding.tvRelease.setText(movieEntity.getMovieReleaseDate());
+        holder.binding.tvTitle.setText(movieEntity.getTitle());
+        holder.binding.tvRelease.setText(movieEntity.getReleaseDate());
     }
 
     @Override
