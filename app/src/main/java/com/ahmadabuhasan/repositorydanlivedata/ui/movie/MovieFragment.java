@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.ahmadabuhasan.repositorydanlivedata.data.source.local.entity.MovieEntity;
 import com.ahmadabuhasan.repositorydanlivedata.databinding.FragmentMovieBinding;
 
+import java.util.List;
+
 public class MovieFragment extends Fragment {
 
     private FragmentMovieBinding binding;
