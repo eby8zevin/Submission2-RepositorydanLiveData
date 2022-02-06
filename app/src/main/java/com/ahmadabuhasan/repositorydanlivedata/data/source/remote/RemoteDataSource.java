@@ -5,7 +5,8 @@ import android.util.Log;
 import com.ahmadabuhasan.repositorydanlivedata.BuildConfig;
 import com.ahmadabuhasan.repositorydanlivedata.api.ApiConfig;
 import com.ahmadabuhasan.repositorydanlivedata.data.source.local.entity.MovieEntity;
-import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.MovieResponse;
+import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.movie.Movie;
+import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.movie.MovieResponse;
 import com.ahmadabuhasan.repositorydanlivedata.utils.EspressoIdlingResource;
 
 import java.util.List;
@@ -36,7 +37,7 @@ public class RemoteDataSource {
             client.enqueue(new Callback<MovieResponse>() {
                 @Override
                 public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                    callback.onAllMoviesReceived(response.body().results);
+                    callback.onAllMoviesReceived();
                     EspressoIdlingResource.increment();
                 }
 
