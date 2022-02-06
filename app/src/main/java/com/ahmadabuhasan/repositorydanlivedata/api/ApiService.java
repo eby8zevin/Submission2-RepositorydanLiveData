@@ -1,6 +1,6 @@
 package com.ahmadabuhasan.repositorydanlivedata.api;
 
-import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.MovieResponse;
+import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.movie.MovieResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
