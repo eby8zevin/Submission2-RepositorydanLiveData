@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ahmadabuhasan.repositorydanlivedata.databinding.FragmentMovieBinding;
+import com.ahmadabuhasan.repositorydanlivedata.utils.EspressoIdlingResource;
 import com.ahmadabuhasan.repositorydanlivedata.viewmodel.ViewModelFactory;
 
 public class MovieFragment extends Fragment {
@@ -32,11 +33,14 @@ public class MovieFragment extends Fragment {
         if (getActivity() != null) {
             ViewModelFactory factory = ViewModelFactory.getInstance(getActivity());
             MovieViewModel viewModel = new ViewModelProvider(this, factory).get(MovieViewModel.class);
+
             binding.progressBar.setVisibility(View.VISIBLE);
+
             MovieAdapter movieAdapter = new MovieAdapter();
-            viewModel.getMovies().observe(this, movieEntities -> {
+            viewModel.getMovies().observe(getViewLifecycleOwner(), movieEntities -> {
                 binding.progressBar.setVisibility(View.GONE);
                 movieAdapter.setMovie(movieEntities);
+                movieAdapter.notifyDataSetChanged();
             });
 
             binding.rvMovie.setLayoutManager(new LinearLayoutManager(getContext()));
