@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.MovieResponse;
+import com.ahmadabuhasan.repositorydanlivedata.utils.EspressoIdlingResource;
 import com.ahmadabuhasan.repositorydanlivedata.utils.JsonHelper;
 
 import java.util.List;
@@ -27,7 +28,11 @@ public class RemoteDataSource {
     }
 
     public void getMovies(LoadMoviesCallback callback) {
-        handler.postDelayed(() -> callback.onMoviesReceived(jsonHelper.loadMovie()), LOADING);
+        EspressoIdlingResource.increment();
+        handler.postDelayed(() -> {
+            callback.onMoviesReceived(jsonHelper.loadMovie());
+            EspressoIdlingResource.decrement();
+        }, LOADING);
     }
 
     public interface LoadMoviesCallback {
