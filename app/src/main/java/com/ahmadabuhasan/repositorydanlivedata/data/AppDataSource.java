@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface AppDataSource {
 
-    LiveData<List<MovieEntity>> getAllMovies = null;
+    LiveData<List<MovieEntity>> getAllMovies();
 }
