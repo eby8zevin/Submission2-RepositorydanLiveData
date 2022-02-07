@@ -11,10 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.ahmadabuhasan.repositorydanlivedata.data.source.local.entity.MovieEntity;
 import com.ahmadabuhasan.repositorydanlivedata.databinding.FragmentMovieBinding;
-
-import java.util.List;
+import com.ahmadabuhasan.repositorydanlivedata.viewmodel.ViewModelFactory;
 
 public class MovieFragment extends Fragment {
 
@@ -32,11 +30,14 @@ public class MovieFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         if (getActivity() != null) {
-            MovieViewModel movieViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MovieViewModel.class);
-            List<MovieEntity> movie = movieViewModel.getMovies();
-
+            ViewModelFactory factory = ViewModelFactory.getInstance(getActivity());
+            MovieViewModel viewModel = new ViewModelProvider(this, factory).get(MovieViewModel.class);
+            binding.progressBar.setVisibility(View.VISIBLE);
             MovieAdapter movieAdapter = new MovieAdapter();
-            movieAdapter.setMovie(movie);
+            viewModel.getMovies().observe(this, movieEntities -> {
+                binding.progressBar.setVisibility(View.GONE);
+                movieAdapter.setMovie(movieEntities);
+            });
 
             binding.rvMovie.setLayoutManager(new LinearLayoutManager(getContext()));
             binding.rvMovie.setHasFixedSize(true);
