@@ -21,9 +21,9 @@ public class JsonHelper {
         this.context = context;
     }
 
-    private String parsingFileToString(String json) {
+    private String parsingFileToString() {
         try {
-            InputStream inputStream = context.getAssets().open(json);
+            InputStream inputStream = context.getAssets().open("Movies.json");
             byte[] bytes = new byte[inputStream.available()];
             inputStream.read(bytes);
             inputStream.close();
@@ -37,8 +37,8 @@ public class JsonHelper {
     public List<MovieResponse> loadMovie() {
         ArrayList<MovieResponse> list = new ArrayList<>();
         try {
-            String json = parsingFileToString("Movies.json");
-            JSONObject responseObject = null;
+            String json = parsingFileToString();
+            JSONObject responseObject;
             if (json != null) {
                 responseObject = new JSONObject(json);
                 JSONArray listArray = responseObject.getJSONArray("movies");
