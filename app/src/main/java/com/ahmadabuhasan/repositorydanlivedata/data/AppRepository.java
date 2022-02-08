@@ -35,7 +35,6 @@ public class AppRepository implements AppDataSource {
             for (MovieResponse response : movieResponses) {
                 MovieEntity movie = new MovieEntity(
                         response.getMovieId(),
-                        response.getOriginalLanguage(),
                         response.getOverview(),
                         response.getPosterPath(),
                         response.getReleaseDate(),
