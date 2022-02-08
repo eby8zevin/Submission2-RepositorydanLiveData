@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MovieViewModel extends ViewModel {
 
-    private AppRepository repository;
+    private final AppRepository repository;
 
     public MovieViewModel(AppRepository mRepository) {
         this.repository = mRepository;
