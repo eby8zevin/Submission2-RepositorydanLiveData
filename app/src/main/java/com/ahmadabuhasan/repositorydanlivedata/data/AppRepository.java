@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.ahmadabuhasan.repositorydanlivedata.data.source.local.entity.MovieEntity;
+import com.ahmadabuhasan.repositorydanlivedata.data.source.local.entity.TVShowEntity;
 import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.RemoteDataSource;
 import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.MovieResponse;
+import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.TVShowResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,5 +48,26 @@ public class AppRepository implements AppDataSource {
             movieResults.postValue(movieList);
         });
         return movieResults;
+    }
+
+    public LiveData<List<TVShowEntity>> getAllTVShows() {
+        MutableLiveData<List<TVShowEntity>> tvShowResults = new MutableLiveData<>();
+        remoteDataSource.getTVShows(tvShowResponses -> {
+            ArrayList<TVShowEntity> tvShowList = new ArrayList<>();
+            for (TVShowResponse response : tvShowResponses) {
+                TVShowEntity tvSHow = new TVShowEntity(
+                        response.getTvShowId(),
+                        response.getOverview(),
+                        response.getPosterPath(),
+                        response.getFirstAirDate(),
+                        response.getTitle(),
+                        response.getVoteAverage());
+
+                tvShowList.add(tvSHow);
+            }
+            tvShowResults.postValue(tvShowList);
+
+        });
+        return tvShowResults;
     }
 }
