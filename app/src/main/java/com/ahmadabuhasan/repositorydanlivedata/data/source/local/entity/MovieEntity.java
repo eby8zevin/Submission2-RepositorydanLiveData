@@ -3,16 +3,14 @@ package com.ahmadabuhasan.repositorydanlivedata.data.source.local.entity;
 public class MovieEntity {
 
     private int movieId;
-    private String originalLanguage;
     private String overview;
     private String posterPath;
     private String releaseDate;
     private String title;
     private Double voteAverage;
 
-    public MovieEntity(int movieId, String originalLanguage, String overview, String posterPath, String releaseDate, String title, Double voteAverage) {
+    public MovieEntity(int movieId, String overview, String posterPath, String releaseDate, String title, Double voteAverage) {
         this.movieId = movieId;
-        this.originalLanguage = originalLanguage;
         this.overview = overview;
         this.posterPath = posterPath;
         this.releaseDate = releaseDate;
@@ -26,14 +24,6 @@ public class MovieEntity {
 
     public void setMovieId(int movieId) {
         this.movieId = movieId;
-    }
-
-    public String getOriginalLanguage() {
-        return originalLanguage;
-    }
-
-    public void setOriginalLanguage(String originalLanguage) {
-        this.originalLanguage = originalLanguage;
     }
 
     public String getOverview() {
