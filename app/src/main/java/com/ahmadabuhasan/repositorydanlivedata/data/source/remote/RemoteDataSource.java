@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.MovieResponse;
+import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.TVShowResponse;
 import com.ahmadabuhasan.repositorydanlivedata.utils.EspressoIdlingResource;
 import com.ahmadabuhasan.repositorydanlivedata.utils.JsonHelper;
 
@@ -35,7 +36,19 @@ public class RemoteDataSource {
         }, LOADING);
     }
 
+    public void getTVShows(LoadTVShowsCallback callback) {
+        EspressoIdlingResource.increment();
+        handler.postDelayed(() -> {
+            callback.onTVShowsReceived(jsonHelper.loadTVShow());
+            EspressoIdlingResource.decrement();
+        }, LOADING);
+    }
+
     public interface LoadMoviesCallback {
         void onMoviesReceived(List<MovieResponse> movieResponses);
+    }
+
+    public interface LoadTVShowsCallback {
+        void onTVShowsReceived(List<TVShowResponse> tvShowResponses);
     }
 }
