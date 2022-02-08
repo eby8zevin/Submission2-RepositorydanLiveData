@@ -12,8 +12,8 @@ import java.util.List;
 public class RemoteDataSource {
 
     private static RemoteDataSource INSTANCE;
-    private JsonHelper jsonHelper;
-    private Handler handler = new Handler(Looper.getMainLooper());
+    private final JsonHelper jsonHelper;
+    private final Handler handler = new Handler(Looper.getMainLooper());
     private final long LOADING = 3000;
 
     private RemoteDataSource(JsonHelper jsonHelper) {
