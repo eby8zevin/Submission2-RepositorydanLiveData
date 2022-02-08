@@ -3,6 +3,7 @@ package com.ahmadabuhasan.repositorydanlivedata.utils;
 import android.content.Context;
 
 import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.MovieResponse;
+import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.TVShowResponse;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,9 +22,9 @@ public class JsonHelper {
         this.context = context;
     }
 
-    private String parsingFileToString() {
+    private String parsingFileToString(String json) {
         try {
-            InputStream inputStream = context.getAssets().open("Movies.json");
+            InputStream inputStream = context.getAssets().open(json);
             byte[] bytes = new byte[inputStream.available()];
             inputStream.read(bytes);
             inputStream.close();
@@ -37,7 +38,7 @@ public class JsonHelper {
     public List<MovieResponse> loadMovie() {
         ArrayList<MovieResponse> list = new ArrayList<>();
         try {
-            String json = parsingFileToString();
+            String json = parsingFileToString("Movies.json");
             JSONObject responseObject;
             if (json != null) {
                 responseObject = new JSONObject(json);
@@ -54,6 +55,34 @@ public class JsonHelper {
 
                     MovieResponse movieResponse = new MovieResponse(movieId, overview, posterPath, releaseDate, title, voteAverage);
                     list.add(movieResponse);
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<TVShowResponse> loadTVShow() {
+        ArrayList<TVShowResponse> list = new ArrayList<>();
+        try {
+            String json = parsingFileToString("TVShows.json");
+            JSONObject responseObject;
+            if (json != null) {
+                responseObject = new JSONObject(json);
+                JSONArray listArray = responseObject.getJSONArray("tvshows");
+                for (int i = 0; i < listArray.length(); i++) {
+                    JSONObject tvshow = listArray.getJSONObject(i);
+
+                    int tvShowId = tvshow.getInt("id");
+                    String overview = tvshow.getString("overview");
+                    String posterPath = tvshow.getString("poster_path");
+                    String firstAirDate = tvshow.getString("first_air_date");
+                    String title = tvshow.getString("title");
+                    Double voteAverage = tvshow.getDouble("vote_average");
+
+                    TVShowResponse tvShowResponse = new TVShowResponse(tvShowId, overview, posterPath, firstAirDate, title, voteAverage);
+                    list.add(tvShowResponse);
                 }
             }
         } catch (JSONException e) {
