@@ -15,7 +15,7 @@ import java.util.List;
 
 public class JsonHelper {
 
-    private Context context;
+    private final Context context;
 
     public JsonHelper(Context context) {
         this.context = context;
@@ -46,14 +46,13 @@ public class JsonHelper {
                     JSONObject movie = listArray.getJSONObject(i);
 
                     int movieId = movie.getInt("id");
-                    String originalLanguage = movie.getString("original_language");
                     String overview = movie.getString("overview");
                     String posterPath = movie.getString("poster_path");
                     String releaseDate = movie.getString("release_date");
                     String title = movie.getString("title");
                     Double voteAverage = movie.getDouble("vote_average");
 
-                    MovieResponse movieResponse = new MovieResponse(movieId, originalLanguage, overview, posterPath, releaseDate, title, voteAverage);
+                    MovieResponse movieResponse = new MovieResponse(movieId, overview, posterPath, releaseDate, title, voteAverage);
                     list.add(movieResponse);
                 }
             }
