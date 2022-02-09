@@ -2,12 +2,14 @@ package com.ahmadabuhasan.repositorydanlivedata.viewmodel;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.ahmadabuhasan.repositorydanlivedata.data.AppRepository;
 import com.ahmadabuhasan.repositorydanlivedata.di.Injection;
 import com.ahmadabuhasan.repositorydanlivedata.ui.movie.MovieViewModel;
+import com.ahmadabuhasan.repositorydanlivedata.ui.tvshow.TVShowViewModel;
 
 public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
@@ -27,9 +29,13 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
         return INSTANCE;
     }
 
+    @NonNull
     public <T extends ViewModel> T create(Class<T> modelClass) {
-        if (modelClass.isAssignableFrom(MovieViewModel.class)) ;
-        return (T) new MovieViewModel(appRepository);
-
+        if (modelClass.isAssignableFrom(MovieViewModel.class)) {
+            return (T) new MovieViewModel(appRepository);
+        } else if (modelClass.isAssignableFrom(TVShowViewModel.class)) {
+            return (T) new TVShowViewModel(appRepository);
+        }
+        throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }
 }
