@@ -11,5 +11,9 @@ public interface AppDataSource {
 
     LiveData<List<MovieEntity>> getAllMovies();
 
+    LiveData<MovieEntity> getDetailMovie(String movieId);
+
     LiveData<List<TVShowEntity>> getAllTVShows();
+
+    LiveData<TVShowEntity> getDetailTVShow(String tvShowId);
 }
