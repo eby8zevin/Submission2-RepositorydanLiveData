@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio/RepositorydanLiveData/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15625" />
+        <entry key="..\:/Android Studio/RepositorydanLiveData/app/src/main/res/drawable-v24/ic_logo_tmdb_foreground.xml" value="0.15625" />
         <entry key="..\:/Android Studio/RepositorydanLiveData/app/src/main/res/drawable/ic_broken_image.xml" value="0.1625" />
         <entry key="..\:/Android Studio/RepositorydanLiveData/app/src/main/res/drawable/ic_error.xml" value="0.1625" />
+        <entry key="..\:/Android Studio/RepositorydanLiveData/app/src/main/res/drawable/ic_launcher_background.xml" value="0.15625" />
         <entry key="..\:/Android Studio/RepositorydanLiveData/app/src/main/res/drawable/ic_loading.xml" value="0.1625" />
         <entry key="..\:/Android Studio/RepositorydanLiveData/app/src/main/res/drawable/ic_refresh.xml" value="0.1625" />
+        <entry key="..\:/Android Studio/RepositorydanLiveData/app/src/main/res/layout/activity_detail_movie.xml" value="0.1" />
         <entry key="..\:/Android Studio/RepositorydanLiveData/app/src/main/res/layout/activity_main.xml" value="0.14492753623188406" />
         <entry key="..\:/Android Studio/RepositorydanLiveData/app/src/main/res/layout/activity_splash_screen.xml" value="0.1092896174863388" />
         <entry key="..\:/Android Studio/RepositorydanLiveData/app/src/main/res/layout/fragment_movie.xml" value="0.1" />
