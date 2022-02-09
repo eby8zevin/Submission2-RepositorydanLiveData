@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.ahmadabuhasan.repositorydanlivedata.data.AppRepository;
 import com.ahmadabuhasan.repositorydanlivedata.di.Injection;
 import com.ahmadabuhasan.repositorydanlivedata.ui.detail.DetailMovieViewModel;
+import com.ahmadabuhasan.repositorydanlivedata.ui.detail.DetailTVShowViewModel;
 import com.ahmadabuhasan.repositorydanlivedata.ui.movie.MovieViewModel;
 import com.ahmadabuhasan.repositorydanlivedata.ui.tvshow.TVShowViewModel;
 
@@ -38,6 +39,8 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             return (T) new TVShowViewModel(appRepository);
         } else if (modelClass.isAssignableFrom(DetailMovieViewModel.class)) {
             return (T) new DetailMovieViewModel(appRepository);
+        } else if (modelClass.isAssignableFrom(DetailTVShowViewModel.class)) {
+            return (T) new DetailTVShowViewModel(appRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }
