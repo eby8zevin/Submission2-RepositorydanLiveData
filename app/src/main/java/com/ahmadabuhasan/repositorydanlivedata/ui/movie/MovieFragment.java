@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.ahmadabuhasan.repositorydanlivedata.databinding.FragmentMovieBinding;
-import com.ahmadabuhasan.repositorydanlivedata.utils.EspressoIdlingResource;
 import com.ahmadabuhasan.repositorydanlivedata.viewmodel.ViewModelFactory;
 
 public class MovieFragment extends Fragment {
