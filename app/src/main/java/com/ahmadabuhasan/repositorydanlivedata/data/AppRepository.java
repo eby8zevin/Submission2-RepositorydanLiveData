@@ -90,4 +90,25 @@ public class AppRepository implements AppDataSource {
         });
         return movieResult;
     }
+
+    public LiveData<TVShowEntity> getDetailTVShow(final String tvShowId) {
+        MutableLiveData<TVShowEntity> tvShowResult = new MutableLiveData<>();
+
+        remoteDataSource.getTVShows(tvShowResponses -> {
+            TVShowEntity tvShow = null;
+            for (TVShowResponse response : tvShowResponses) {
+                if (response.getTvShowId().equals(tvShowId)) {
+                    tvShow = new TVShowEntity(
+                            response.getTvShowId(),
+                            response.getOverview(),
+                            response.getPosterPath(),
+                            response.getFirstAirDate(),
+                            response.getTitle(),
+                            response.getVoteAverage());
+                }
+            }
+            tvShowResult.postValue(tvShow);
+        });
+        return tvShowResult;
+    }
 }
