@@ -1,5 +1,6 @@
 package com.ahmadabuhasan.repositorydanlivedata.ui.movie;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ahmadabuhasan.repositorydanlivedata.R;
 import com.ahmadabuhasan.repositorydanlivedata.data.source.local.entity.MovieEntity;
 import com.ahmadabuhasan.repositorydanlivedata.databinding.ItemListBinding;
+import com.ahmadabuhasan.repositorydanlivedata.ui.detail.DetailMovieActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -41,6 +43,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                 .into(holder.binding.ivPoster);
         holder.binding.tvTitle.setText(movieEntity.getTitle());
         holder.binding.tvRelease.setText(movieEntity.getReleaseDate());
+
+        holder.bind(movieEntity);
     }
 
     @Override
@@ -54,6 +58,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         public MovieViewHolder(@NonNull ItemListBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
+        }
+
+        void bind(MovieEntity movieEntity) {
+            itemView.setOnClickListener(view -> {
+                Intent i = new Intent(itemView.getContext(), DetailMovieActivity.class);
+                i.putExtra(DetailMovieActivity.EXTRA_MOVIE, movieEntity.getMovieId());
+                itemView.getContext().startActivity(i);
+            });
         }
     }
 }
