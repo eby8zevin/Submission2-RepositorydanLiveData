@@ -66,8 +66,28 @@ public class AppRepository implements AppDataSource {
                 tvShowList.add(tvSHow);
             }
             tvShowResults.postValue(tvShowList);
-
         });
         return tvShowResults;
+    }
+
+    public LiveData<MovieEntity> getDetailMovie(final String movieId) {
+        MutableLiveData<MovieEntity> movieResult = new MutableLiveData<>();
+
+        remoteDataSource.getMovies(movieResponses -> {
+            MovieEntity movie = null;
+            for (MovieResponse response : movieResponses) {
+                if (response.getMovieId().equals(movieId)) {
+                    movie = new MovieEntity(
+                            response.getMovieId(),
+                            response.getOverview(),
+                            response.getPosterPath(),
+                            response.getReleaseDate(),
+                            response.getTitle(),
+                            response.getVoteAverage());
+                }
+            }
+            movieResult.postValue(movie);
+        });
+        return movieResult;
     }
 }
