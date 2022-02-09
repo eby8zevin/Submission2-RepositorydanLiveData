@@ -46,12 +46,12 @@ public class JsonHelper {
                 for (int i = 0; i < listArray.length(); i++) {
                     JSONObject movie = listArray.getJSONObject(i);
 
-                    int movieId = movie.getInt("id");
+                    String movieId = movie.getString("id");
                     String overview = movie.getString("overview");
                     String posterPath = movie.getString("poster_path");
                     String releaseDate = movie.getString("release_date");
                     String title = movie.getString("title");
-                    Double voteAverage = movie.getDouble("vote_average");
+                    String voteAverage = movie.getString("vote_average");
 
                     MovieResponse movieResponse = new MovieResponse(movieId, overview, posterPath, releaseDate, title, voteAverage);
                     list.add(movieResponse);
@@ -74,12 +74,12 @@ public class JsonHelper {
                 for (int i = 0; i < listArray.length(); i++) {
                     JSONObject tvshow = listArray.getJSONObject(i);
 
-                    int tvShowId = tvshow.getInt("id");
+                    String tvShowId = tvshow.getString("id");
                     String overview = tvshow.getString("overview");
                     String posterPath = tvshow.getString("poster_path");
                     String firstAirDate = tvshow.getString("first_air_date");
                     String title = tvshow.getString("title");
-                    Double voteAverage = tvshow.getDouble("vote_average");
+                    String voteAverage = tvshow.getString("vote_average");
 
                     TVShowResponse tvShowResponse = new TVShowResponse(tvShowId, overview, posterPath, firstAirDate, title, voteAverage);
                     list.add(tvShowResponse);
