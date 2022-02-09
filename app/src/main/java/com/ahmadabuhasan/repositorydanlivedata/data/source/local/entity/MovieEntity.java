@@ -2,14 +2,14 @@ package com.ahmadabuhasan.repositorydanlivedata.data.source.local.entity;
 
 public class MovieEntity {
 
-    private int movieId;
+    private String movieId;
     private String overview;
     private String posterPath;
     private String releaseDate;
     private String title;
-    private Double voteAverage;
+    private String voteAverage;
 
-    public MovieEntity(int movieId, String overview, String posterPath, String releaseDate, String title, Double voteAverage) {
+    public MovieEntity(String movieId, String overview, String posterPath, String releaseDate, String title, String voteAverage) {
         this.movieId = movieId;
         this.overview = overview;
         this.posterPath = posterPath;
@@ -18,11 +18,11 @@ public class MovieEntity {
         this.voteAverage = voteAverage;
     }
 
-    public int getMovieId() {
+    public String getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(int movieId) {
+    public void setMovieId(String movieId) {
         this.movieId = movieId;
     }
 
@@ -58,11 +58,11 @@ public class MovieEntity {
         this.title = title;
     }
 
-    public Double getVoteAverage() {
+    public String getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(Double voteAverage) {
+    public void setVoteAverage(String voteAverage) {
         this.voteAverage = voteAverage;
     }
 }
