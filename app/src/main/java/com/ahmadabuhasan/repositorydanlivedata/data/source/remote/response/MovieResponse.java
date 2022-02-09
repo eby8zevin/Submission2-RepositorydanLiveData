@@ -5,14 +5,14 @@ import android.os.Parcelable;
 
 public class MovieResponse implements Parcelable {
 
-    private int movieId;
+    private String movieId;
     private String overview;
     private String posterPath;
     private String releaseDate;
     private String title;
-    private Double voteAverage;
+    private String voteAverage;
 
-    public MovieResponse(int movieId, String overview, String posterPath, String releaseDate, String title, Double voteAverage) {
+    public MovieResponse(String movieId, String overview, String posterPath, String releaseDate, String title, String voteAverage) {
         this.movieId = movieId;
         this.overview = overview;
         this.posterPath = posterPath;
@@ -21,11 +21,11 @@ public class MovieResponse implements Parcelable {
         this.voteAverage = voteAverage;
     }
 
-    public int getMovieId() {
+    public String getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(int movieId) {
+    public void setMovieId(String movieId) {
         this.movieId = movieId;
     }
 
@@ -61,40 +61,31 @@ public class MovieResponse implements Parcelable {
         this.title = title;
     }
 
-    public Double getVoteAverage() {
+    public String getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(Double voteAverage) {
+    public void setVoteAverage(String voteAverage) {
         this.voteAverage = voteAverage;
     }
 
     protected MovieResponse(Parcel in) {
-        movieId = in.readInt();
+        movieId = in.readString();
         overview = in.readString();
         posterPath = in.readString();
         releaseDate = in.readString();
         title = in.readString();
-        if (in.readByte() == 0) {
-            voteAverage = null;
-        } else {
-            voteAverage = in.readDouble();
-        }
+        voteAverage = in.readString();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(movieId);
+        dest.writeString(movieId);
         dest.writeString(overview);
         dest.writeString(posterPath);
         dest.writeString(releaseDate);
         dest.writeString(title);
-        if (voteAverage == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(voteAverage);
-        }
+        dest.writeString(voteAverage);
     }
 
     @Override
