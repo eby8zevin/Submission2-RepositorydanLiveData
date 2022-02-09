@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_logo_tmdb_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RepositoryDanLiveData">
+        <activity android:name=".ui.detail.DetailTVShowActivity" />
         <activity android:name=".ui.detail.DetailMovieActivity" />
         <activity android:name=".ui.MainActivity" />
         <activity
