@@ -2,14 +2,14 @@ package com.ahmadabuhasan.repositorydanlivedata.data.source.local.entity;
 
 public class TVShowEntity {
 
-    private int tvShowId;
+    private String tvShowId;
     private String overview;
     private String posterPath;
     private String firstAirDate;
     private String title;
-    private Double voteAverage;
+    private String voteAverage;
 
-    public TVShowEntity(int tvShowId, String overview, String posterPath, String firstAirDate, String title, Double voteAverage) {
+    public TVShowEntity(String tvShowId, String overview, String posterPath, String firstAirDate, String title, String voteAverage) {
         this.tvShowId = tvShowId;
         this.overview = overview;
         this.posterPath = posterPath;
@@ -18,11 +18,11 @@ public class TVShowEntity {
         this.voteAverage = voteAverage;
     }
 
-    public int getTvShowId() {
+    public String getTvShowId() {
         return tvShowId;
     }
 
-    public void setTvShowId(int tvShowId) {
+    public void setTvShowId(String tvShowId) {
         this.tvShowId = tvShowId;
     }
 
@@ -58,11 +58,11 @@ public class TVShowEntity {
         this.title = title;
     }
 
-    public Double getVoteAverage() {
+    public String getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(Double voteAverage) {
+    public void setVoteAverage(String voteAverage) {
         this.voteAverage = voteAverage;
     }
 }
