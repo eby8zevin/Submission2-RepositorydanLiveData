@@ -1,0 +1,55 @@
+
+Skenario Codelab Unit Testing ViewModel:
+
+1. MovieViewModel:
+	- Load Movies:
+		- Memastikan data movie tidak null.
+		- Memastikan jumlah data movie sesuai dengan yang diharapkan.
+
+2. TVShowViewModel:
+	- Load TVShows:
+		- Memastikan data tvshow tidak null.
+		- Memastikan jumlah data tvshow sesuai dengan yang diharapkan.
+
+3. MovieDetailViewModel:
+	- Load Movies:
+		- Memastikan data movie tidak null.
+		- Memastikan data movie sesuai dengan yang diharapkan.
+
+4. TVShowDetailViewModel:
+	- Load TVShows:
+		- Memastikan data tvshow tidak null.
+		- Memastikan data tvshow sesuai dengan yang diharapkan.
+
+
+Skenario Codelab Instrumental Testing ViewModel:
+
+1. Menampilkan data movie
+	- Memastikan Loading tampil dalam 3 detik.
+	- Memastikan rv_movie dalam keadaan tampil.
+	- Gulir rv_movies ke posisi data terakhir.
+
+2. Menampilkan data tvshow
+    	- Klik TabLayout dengan teks "TV Show".
+	- Memastikan Loading tampil dalam 3 detik.
+	- Memastikan rv_tvshow dalam keadaan tampil.
+	- Gulir rv_tvshow ke posisi data terakhir.
+
+3. Menampilkan data detail movie
+	- Memastikan Loading tampil dalam 3 detik.
+	- Memberi tindakan klik pada data pertama di rv_movie.
+	- Memastikan ImageView iv_movie_poster tampil sesuai yang diharapkan.
+	- Memastikan Title Collapsing tampil sesuai dengan yang diharapkan.
+	- Memastikan RatingBar rating_bar tampil sesuai dengan yang diharapkan.
+	- Memastikan TextView tv_movie_detail_overview tampil sesuai yang diharapkan.
+	- Gulir ActivityDetailMovie ke bawah.
+
+4. Menampilkan data detail tvshow
+	- Klik dengan teks "TV Show".
+	- Memastikan Loading tampil dalam 3 detik.
+	- Memberi tindakan klik pada data pertama di rv_tvshow.
+	- Memastikan ImageView iv_tvshow_poster tampil sesuai yang diharapkan.
+	- Memastikan Title Collapsing tampil sesuai dengan yang diharapkan.
+	- Memastikan RatingBar rating_bar tampil sesuai yang diharapkan.
+	- Memastikan TextView tv_tvshow_detail_overview tampil sesuai yang diharapkan.
+	- Gulir ActivityDetailTVShow ke bawah.
