@@ -29,8 +29,8 @@ import java.util.ArrayList;
 
 public class MainActivityTest {
 
-    private ArrayList<MovieEntity> dummyMovies = DataDummy.generateDummyMovies();
-    private ArrayList<TVShowEntity> dummyTVShows = DataDummy.generateDummyTVShows();
+    private final ArrayList<MovieEntity> dummyMovies = DataDummy.generateDummyMovies();
+    private final ArrayList<TVShowEntity> dummyTVShows = DataDummy.generateDummyTVShows();
 
     @Before
     public void setUp() {
