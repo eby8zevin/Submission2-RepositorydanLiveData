@@ -1,0 +1,104 @@
+package com.ahmadabuhasan.repositorydanlivedata.data;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import com.ahmadabuhasan.repositorydanlivedata.data.source.local.entity.MovieEntity;
+import com.ahmadabuhasan.repositorydanlivedata.data.source.local.entity.TVShowEntity;
+import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.RemoteDataSource;
+import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.MovieResponse;
+import com.ahmadabuhasan.repositorydanlivedata.data.source.remote.response.TVShowResponse;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FakeAppRepository implements AppDataSource {
+
+    private final RemoteDataSource remoteDataSource;
+
+    public FakeAppRepository(RemoteDataSource remoteDataSource) {
+        this.remoteDataSource = remoteDataSource;
+    }
+
+    public LiveData<List<MovieEntity>> getAllMovies() {
+        MutableLiveData<List<MovieEntity>> movieResults = new MutableLiveData<>();
+        remoteDataSource.getMovies(movieResponses -> {
+            ArrayList<MovieEntity> movieList = new ArrayList<>();
+            for (MovieResponse response : movieResponses) {
+                MovieEntity movie = new MovieEntity(
+                        response.getMovieId(),
+                        response.getOverview(),
+                        response.getPosterPath(),
+                        response.getReleaseDate(),
+                        response.getTitle(),
+                        response.getVoteAverage());
+
+                movieList.add(movie);
+            }
+            movieResults.postValue(movieList);
+        });
+        return movieResults;
+    }
+
+    public LiveData<List<TVShowEntity>> getAllTVShows() {
+        MutableLiveData<List<TVShowEntity>> tvShowResults = new MutableLiveData<>();
+        remoteDataSource.getTVShows(tvShowResponses -> {
+            ArrayList<TVShowEntity> tvShowList = new ArrayList<>();
+            for (TVShowResponse response : tvShowResponses) {
+                TVShowEntity tvSHow = new TVShowEntity(
+                        response.getTvShowId(),
+                        response.getOverview(),
+                        response.getPosterPath(),
+                        response.getFirstAirDate(),
+                        response.getTitle(),
+                        response.getVoteAverage());
+
+                tvShowList.add(tvSHow);
+            }
+            tvShowResults.postValue(tvShowList);
+        });
+        return tvShowResults;
+    }
+
+    public LiveData<MovieEntity> getDetailMovie(final String movieId) {
+        MutableLiveData<MovieEntity> movieResult = new MutableLiveData<>();
+
+        remoteDataSource.getMovies(movieResponses -> {
+            MovieEntity movie = null;
+            for (MovieResponse response : movieResponses) {
+                if (response.getMovieId().equals(movieId)) {
+                    movie = new MovieEntity(
+                            response.getMovieId(),
+                            response.getOverview(),
+                            response.getPosterPath(),
+                            response.getReleaseDate(),
+                            response.getTitle(),
+                            response.getVoteAverage());
+                }
+            }
+            movieResult.postValue(movie);
+        });
+        return movieResult;
+    }
+
+    public LiveData<TVShowEntity> getDetailTVShow(final String tvShowId) {
+        MutableLiveData<TVShowEntity> tvShowResult = new MutableLiveData<>();
+
+        remoteDataSource.getTVShows(tvShowResponses -> {
+            TVShowEntity tvShow = null;
+            for (TVShowResponse response : tvShowResponses) {
+                if (response.getTvShowId().equals(tvShowId)) {
+                    tvShow = new TVShowEntity(
+                            response.getTvShowId(),
+                            response.getOverview(),
+                            response.getPosterPath(),
+                            response.getFirstAirDate(),
+                            response.getTitle(),
+                            response.getVoteAverage());
+                }
+            }
+            tvShowResult.postValue(tvShow);
+        });
+        return tvShowResult;
+    }
+}
