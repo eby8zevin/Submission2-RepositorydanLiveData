@@ -45,7 +45,6 @@ public class MainActivityTest {
 
     @Test
     public void loadMovies() {
-        delayThreeSecond();
         onView(withId(R.id.rv_movie)).check(matches(isDisplayed()));
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.scrollToPosition(dummyMovies.size()));
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition(10, scrollTo()));
@@ -53,7 +52,6 @@ public class MainActivityTest {
 
     @Test
     public void loadDetailMovie() {
-        delayThreeSecond();
         onView(withId(R.id.rv_movie)).check(matches(isDisplayed()));
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
@@ -80,7 +78,6 @@ public class MainActivityTest {
 
     @Test
     public void loadTVShow() {
-        delayThreeSecond();
         onView(withText("TV Show")).perform(click());
         onView(withId(R.id.rv_tvshow)).check(matches(isDisplayed()));
         onView(withId(R.id.rv_tvshow)).perform(RecyclerViewActions.scrollToPosition(dummyTVShows.size()));
@@ -89,7 +86,6 @@ public class MainActivityTest {
 
     @Test
     public void loadDetailTVShow() {
-        delayThreeSecond();
         onView(withText("TV Show")).perform(click());
         onView(withId(R.id.rv_tvshow)).check(matches(isDisplayed()));
         onView(withId(R.id.rv_tvshow)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
@@ -113,13 +109,5 @@ public class MainActivityTest {
         // Scroll
         onView(withId(R.id.appbar_tvshow)).check(matches(isDisplayed()));
         onView(withId(R.id.appbar_tvshow)).perform(click(), swipeUp());
-    }
-
-    private void delayThreeSecond() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }
